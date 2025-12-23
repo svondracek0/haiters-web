@@ -15,7 +15,7 @@ const Hero = () => {
                     transition={{ duration: 0.8 }}
                     className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
                 >
-                    Reasonable Use of <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AI</span>
+                    Rozumné využití <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AI</span>
                 </motion.h1>
 
                 <motion.p
@@ -24,7 +24,7 @@ const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed"
                 >
-                    A platform for professionals in creative industries to discuss, define, and master the integration of artificial intelligence in daily work.
+                    Platforma pro profesionály v kreativních odvětvích k diskuzi, definování a ovládnutí integrace umělé inteligence do každodenní práce.
                 </motion.p>
 
                 <motion.div
@@ -36,7 +36,7 @@ const Hero = () => {
                         href="#sectors"
                         className="inline-block bg-white text-dark px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors"
                     >
-                        Explore Sectors
+                        Prozkoumat sektory
                     </a>
                 </motion.div>
             </div>

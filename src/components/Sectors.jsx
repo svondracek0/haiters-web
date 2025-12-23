@@ -5,17 +5,17 @@ import { BookOpen, Code, PenTool, Palette } from 'lucide-react';
 const sectors = [
     {
         id: 'education',
-        title: 'Education',
+        title: 'Vzdělávání',
         icon: BookOpen,
-        description: 'Redefining learning methodologies and academic integrity in the age of AI.',
+        description: 'Redefinice metodiky výuky a akademické integrity v éře AI.',
         color: 'text-blue-400',
         bg: 'bg-blue-400/10'
     },
     {
         id: 'programming',
-        title: 'Programming',
+        title: 'Programování',
         icon: Code,
-        description: 'Leveraging AI assistants to write cleaner, more efficient code while maintaining architectural control.',
+        description: 'Využití AI asistentů pro psaní čistšího a efektivnějšího kódu při zachování architektonické kontroly.',
         color: 'text-green-400',
         bg: 'bg-green-400/10'
     },
@@ -23,7 +23,7 @@ const sectors = [
         id: 'copywriting',
         title: 'Copywriting',
         icon: PenTool,
-        description: 'Balancing human creativity with AI-generated content for impactful storytelling.',
+        description: 'Vyvážení lidské kreativity s obsahem generovaným AI pro působivé vyprávění příběhů.',
         color: 'text-yellow-400',
         bg: 'bg-yellow-400/10'
     },
@@ -31,7 +31,7 @@ const sectors = [
         id: 'design',
         title: 'Design',
         icon: Palette,
-        description: 'Exploring new frontiers of visual expression without losing the human touch.',
+        description: 'Objevování nových hranic vizuálního vyjádření bez ztráty lidského doteku.',
         color: 'text-pink-400',
         bg: 'bg-pink-400/10'
     }
@@ -47,9 +47,9 @@ const Sectors = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">Focus Areas</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold mb-4">Oblasti zájmu</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        We explore the impact of AI across four key pillars of the creative economy.
+                        Zkoumáme dopad AI napříč čtyřmi klíčovými pilíři kreativní ekonomiky.
                     </p>
                 </motion.div>
 

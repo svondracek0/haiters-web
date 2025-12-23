@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#6366f1", // Indigo 500
-        secondary: "#a855f7", // Purple 500
-        dark: "#0a0a0a",
-        light: "#ededed",
+        primary: "#10b981", // Emerald 500
+        secondary: "#34d399", // Emerald 400
+        dark: "#171717", // Neutral 900
+        light: "#fafafa", // Neutral 50
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
