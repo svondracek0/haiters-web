@@ -7,11 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#000000", // Black
-        secondary: "#D2B48C", // Tan/Beige
-        beige: "#D2B48C", // Explicit beige alias
-        dark: "#FFFFFF", // White (Background)
-        light: "#000000", // Black (Text)
+        primary: "#10b981", // Emerald 500
+        secondary: "#34d399", // Emerald 400
+        dark: "#171717", // Neutral 900
+        light: "#fafafa", // Neutral 50
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
