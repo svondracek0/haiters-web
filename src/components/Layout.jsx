@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Layout = ({ children }) => {
-    const location = useLocation();
-    const isHome = location.pathname === '/';
 
     return (
         <div className="min-h-screen flex flex-col bg-white text-black overflow-hidden">
@@ -27,7 +25,6 @@ const Layout = ({ children }) => {
 
             <footer className="border-t border-gray-100 py-8 mt-20">
                 <div className="container mx-auto px-6 text-center text-gray-500 text-sm">
-                    &copy; {new Date().getFullYear()} haiters.cz. Všechna práva vyhrazena.
                     &copy; {new Date().getFullYear()} haiters.cz. Všechna práva vyhrazena.
                 </div>
             </footer>
