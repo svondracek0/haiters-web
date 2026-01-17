@@ -13,9 +13,6 @@ const Hero = () => {
                 <p className="text-xl md:text-2xl text-gray-600 max-w-6xl mx-auto mb-2 leading-relaxed">
                     Zajímá nás kvalita výstupů práce s AI která se dostává do veřejného prostoru.
                 </p>
-                <p className="text-xl md:text-2xl text-gray-600 max-w-6xl mx-auto mb-2 leading-relaxed">
-                    Chceme společně snižovat negativní dopady AI obsahu a technologií na společnost.
-                </p>
                 <p className="text-xl md:text-2xl text-gray-600 max-w-6xl mx-auto mb-10 leading-relaxed">
                     Chceme, aby se lidská tvořivost, empatie a vědomí neutopily pod nánosy nekvalitního AI obsahu.
                 </p>

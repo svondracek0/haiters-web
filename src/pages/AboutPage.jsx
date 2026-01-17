@@ -22,9 +22,9 @@ const AboutPage = () => {
                                 <p className="text-secondary font-medium mb-4">Zakladatel & Tvůrce</p>
                                 <p className="text-gray-600 leading-relaxed">
                                     Jsem ML Engineer a lektor, který nejenže AI modely nasazuje do produkčních procesů ve firmách, ale také je sám využívá v každodenním životě.
-                                    Přesto vnímám, že AI nástroje vedle zvýšení produktivity přinášejí i značné množství nekvalitních výstupů, které se velmi snadno dostávají do veřejného prostoru,
-                                    kde působí celkovou degradaci estetiky, funkčnosti, spolehlivosti a bezpečnosti
-                                    Platformu hAIters jsem založil s úmyslem pragmaticky a bez emocí zdůrazňovat negativní dopady využívání AI.
+                                    Přesto vnímám, že AI nástroje vedle zvýšení produktivity přinášejí i značné množství nekvalitních výstupů, které se velmi snadno dostávají do veřejného prostoru.
+                                    Zde působí celkovou degradaci estetiky, funkčnosti, spolehlivosti a bezpečnosti.
+                                    Platformu haiters jsem založil s úmyslem pragmaticky a bez emocí zdůrazňovat možné negativní dopady využívání AI, a zvýšit tak důslednost a obezřetnost při jejím používání.
                                 </p>
                             </div>
                         </div>
