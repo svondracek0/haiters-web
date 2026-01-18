@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { supabase } from '../supabaseClient';
-
 const Newsletter = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -21,15 +19,12 @@ const Newsletter = () => {
         setStatus('loading');
 
         try {
-            const { error } = await supabase
-                .from('subscribers')
-                .insert([
-                    { name: formData.name, email: formData.email }
-                ]);
+            // TODO: Implement newsletter subscription logic (e.g., EmailJS or other service)
+            console.log('Newsletter submission (mock):', formData);
 
-            if (error) throw error;
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 1000));
 
-            console.log('Newsletter submission success:', formData);
             setStatus('success');
             setFormData({ name: '', email: '' });
 
@@ -51,9 +46,6 @@ const Newsletter = () => {
         <section id="newsletter" className="py-20 bg-white border-t border-gray-100">
             <div className="container mx-auto px-6">
                 <div className="max-w-2xl mx-auto text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-                        Zůstaňte v obraze
-                    </h2>
                     <p className="text-gray-600 mb-8">
                         Přihlaste se k odběru našeho newsletteru a získejte nejnovější informace o našich projektech a investičních příležitostech.
                     </p>
