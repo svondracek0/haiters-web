@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { supabase } from '../supabaseClient';
+import emailjs from '@emailjs/browser';
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -21,17 +21,26 @@ const ContactPage = () => {
         setStatus('loading');
 
         try {
-            const { error } = await supabase
-                .from('messages')
-                .insert([
-                    {
-                        name: formData.name,
-                        email: formData.email,
-                        message: formData.message
-                    }
-                ]);
+            // Send Email via EmailJS
+            const SERVICE_ID = 'haiters_email_service';
+            const TEMPLATE_ID = 'haiters_email_template';
+            const PUBLIC_KEY = 'GUcQ6cAp-svs9OglB';
 
-            if (error) throw error;
+            // Only attempt to send email if keys are not placeholders
+            if (SERVICE_ID !== 'YOUR_SERVICE_ID') {
+                await emailjs.send(
+                    SERVICE_ID,
+                    TEMPLATE_ID,
+                    {
+                        from_name: formData.name,
+                        from_email: formData.email,
+                        message: formData.message,
+                    },
+                    PUBLIC_KEY
+                );
+            } else {
+                console.warn('EmailJS keys are missing. Email was not sent.');
+            }
 
             console.log('Message submission success:', formData);
             setStatus('success');
@@ -43,6 +52,9 @@ const ContactPage = () => {
             }, 5000);
         } catch (error) {
             console.error('Error submitting message:', error);
+            if (error.text) {
+                console.error('EmailJS Error:', error.text);
+            }
             setStatus('error');
             // Reset error state after 5 seconds
             setTimeout(() => {
@@ -55,7 +67,6 @@ const ContactPage = () => {
         <section className="py-20 bg-white">
             <div className="container mx-auto px-6">
                 <div className="max-w-2xl mx-auto">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-12 text-black text-center">Kontakt</h1>
 
                     <div className="bg-white">
                         <p className="text-gray-600 mb-8 text-center">
