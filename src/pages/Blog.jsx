@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, User, ArrowRight, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { blogPosts } from '../data/blogPosts';
+import { getBlogPosts } from '../utils/posts';
 import { formatDate, calculateReadingTime } from '../utils/blogUtils';
 
 const Blog = () => {
     const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Simulate fetching data
-        setPosts(blogPosts);
+        const fetchPosts = async () => {
+            try {
+                const fetchedPosts = await getBlogPosts();
+                setPosts(fetchedPosts);
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPosts();
     }, []);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex justify-center items-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-gray-50 py-12">
@@ -18,7 +37,7 @@ const Blog = () => {
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {posts.map((post) => (
                         <article
-                            key={post.id}
+                            key={post.slug}
                             className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col h-full border border-gray-100"
                         >
                             {post.thumbnail && (

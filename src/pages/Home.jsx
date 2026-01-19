@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
 import Hero from '../components/Hero';
-import { blogPosts } from '../data/blogPosts';
+import { getBlogPosts } from '../utils/posts';
 import { formatDate, calculateReadingTime } from '../utils/blogUtils';
 
 const Home = () => {
-    // Get latest 3 posts
-    const latestPosts = blogPosts.slice(0, 3);
+    const [latestPosts, setLatestPosts] = useState([]);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const posts = await getBlogPosts();
+                setLatestPosts(posts.slice(0, 3));
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+            }
+        };
+
+        fetchPosts();
+    }, []);
 
     return (
         <>
@@ -25,7 +37,7 @@ const Home = () => {
                     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
                         {latestPosts.map((post) => (
                             <article
-                                key={post.id}
+                                key={post.slug}
                                 className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col h-full border border-gray-100"
                             >
                                 {post.thumbnail && (

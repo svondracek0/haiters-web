@@ -1,17 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, Clock, ArrowLeft } from 'lucide-react';
-import { blogPosts } from '../data/blogPosts';
+import Markdown from 'react-markdown';
+import { getBlogPosts } from '../utils/posts';
 import { formatDate, calculateReadingTime } from '../utils/blogUtils';
 
 const BlogPost = () => {
     const { slug } = useParams();
     const [post, setPost] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const foundPost = blogPosts.find(p => p.slug === slug);
-        setPost(foundPost);
+        const fetchPost = async () => {
+            try {
+                const posts = await getBlogPosts();
+                const foundPost = posts.find(p => p.slug === slug);
+                setPost(foundPost);
+            } catch (error) {
+                console.error("Error fetching post:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPost();
     }, [slug]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex justify-center items-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+            </div>
+        );
+    }
 
     if (!post) {
         return (
@@ -28,15 +49,7 @@ const BlogPost = () => {
         <div className="min-h-screen bg-gray-50 py-12">
             <div className="container mx-auto px-6">
                 <article className="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm overflow-hidden">
-                    {post.thumbnail && (
-                        <div className="h-64 sm:h-96 overflow-hidden">
-                            <img
-                                src={post.thumbnail}
-                                alt={post.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    )}
+
 
                     <div className="p-8 sm:p-12">
                         <Link to="/blog" className="inline-flex items-center text-gray-500 hover:text-beige mb-8 transition-colors">
@@ -62,10 +75,9 @@ const BlogPost = () => {
                             </div>
                         </div>
 
-                        <div
-                            className="prose prose-lg prose-indigo max-w-none"
-                            dangerouslySetInnerHTML={{ __html: post.content }}
-                        />
+                        <div className="prose prose-lg prose-indigo max-w-none prose-img:my-16 prose-img:rounded-xl prose-img:shadow-md prose-p:leading-loose prose-p:mb-8 prose-headings:mb-6 prose-headings:mt-12 prose-li:leading-relaxed">
+                            <Markdown>{post.content}</Markdown>
+                        </div>
                     </div>
                 </article>
             </div>
